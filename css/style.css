@@ -229,8 +229,17 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
   height: 80px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 16px;
+  position: relative;
+}
+
+.header-right {
+  position: absolute;
+  right: var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
 
 .logo {
@@ -256,12 +265,6 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
   font-size: 0.92rem;
   color: var(--col-gold);
   white-space: nowrap;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 18px;
 }
 
 /* ============================================================
@@ -354,9 +357,9 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
   margin-inline: auto;
 }
 
-.hero-text { text-align: center; }
+.hero-text { text-align: left; }
 .hero-text h1 { margin-block: 0 18px; }
-.hero-text p  { font-size: 1.05rem; margin-bottom: 30px; }
+.hero-text p  { font-size: 1.05rem; margin-bottom: 30px; color: rgba(255,255,255,0.78); }
 
 /* "You Love Money," — larger display line */
 .hero-big-line {
@@ -1371,11 +1374,47 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
 }
 .final-cta-inner h2 { margin-block: 16px 20px; }
 .final-cta-inner > p { margin-bottom: 36px; }
-.final-cta-inner .recap-list {
-  text-align: left;
-  max-width: 440px;
-  margin-inline: auto;
+.recap-icons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
   margin-bottom: 40px;
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.recap-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.recap-icon-badge {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(216,178,96,0.12);
+  border: 1px solid rgba(216,178,96,0.28);
+  color: var(--col-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.recap-icon-item:hover .recap-icon-badge {
+  background: rgba(216,178,96,0.2);
+  box-shadow: 0 0 20px rgba(216,178,96,0.18);
+}
+
+.recap-icon-label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.4;
 }
 
 .final-cta-grid {
@@ -1413,6 +1452,222 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
   justify-content: center;
 }
 .recap-check svg { display: block; }
+
+/* ============================================================
+   CTA MODAL FORM
+   ============================================================ */
+.cta-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+
+.cta-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+.cta-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(4px);
+}
+
+.cta-modal-card {
+  position: relative;
+  background: var(--col-bg-card);
+  border: 1px solid rgba(216,178,96,0.2);
+  border-radius: 24px;
+  padding: 40px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(216,178,96,0.08);
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cta-modal.is-open .cta-modal-card {
+  transform: translateY(0) scale(1);
+}
+
+.cta-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.cta-modal-close:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.07);
+}
+
+.cta-modal-header {
+  margin-bottom: 28px;
+}
+
+.cta-modal-header .label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.cta-modal-header h3 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 10px;
+  line-height: 1.2;
+}
+
+.cta-modal-header p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.5);
+  margin: 0;
+}
+
+.cta-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cta-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.cta-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cta-form-field label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+}
+
+.cta-form-field label span { color: var(--col-gold); }
+.cta-form-field label .optional { color: rgba(255,255,255,0.3); font-weight: 400; }
+
+.cta-form-field input,
+.cta-form-field select,
+.cta-form-field textarea {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 0.92rem;
+  color: #fff;
+  font-family: inherit;
+  width: 100%;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.cta-form-field input::placeholder,
+.cta-form-field textarea::placeholder { color: rgba(255,255,255,0.25); }
+
+.cta-form-field select option { background: #1a1e25; color: #fff; }
+
+.cta-form-field input:focus,
+.cta-form-field select:focus,
+.cta-form-field textarea:focus {
+  border-color: rgba(216,178,96,0.5);
+  box-shadow: 0 0 0 3px rgba(216,178,96,0.1);
+}
+
+.cta-form-field textarea { resize: vertical; min-height: 80px; }
+
+.field-error {
+  font-size: 0.76rem;
+  color: #ff6b6b;
+  min-height: 1em;
+  display: block;
+}
+
+.cta-form-field input.invalid,
+.cta-form-field select.invalid {
+  border-color: rgba(255,107,107,0.6);
+  box-shadow: 0 0 0 3px rgba(255,107,107,0.1);
+}
+
+.cta-form-field input.valid {
+  border-color: rgba(0,210,148,0.5);
+}
+
+.cta-form-submit {
+  width: 100%;
+  margin-top: 4px;
+  font-size: 1rem;
+  padding-block: 15px;
+  justify-content: center;
+}
+
+.cta-form-note {
+  font-size: 0.76rem;
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+  margin: 0;
+}
+
+.cta-form-success {
+  text-align: center;
+  padding: 20px 0 10px;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(0,210,148,0.12);
+  border: 1px solid rgba(0,210,148,0.3);
+  color: var(--col-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.cta-form-success h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 10px;
+}
+
+.cta-form-success p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.5);
+  margin: 0;
+}
+
+@media (max-width: 500px) {
+  .cta-modal-card { padding: 28px 20px; }
+  .cta-form-row   { grid-template-columns: 1fr; }
+}
 
 /* ============================================================
    FOOTER
@@ -1493,6 +1748,7 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
   .steps-grid       { grid-template-columns: 1fr; }
   .proof-slim-grid  { grid-template-columns: 1fr; }
   .final-cta-grid   { grid-template-columns: 1fr; }
+  .recap-icons      { grid-template-columns: repeat(2, 1fr); gap: 28px; }
 
   .header-right .btn { display: none; }
 }

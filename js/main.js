@@ -1,4 +1,73 @@
 /* ============================================================
+   CTA MODAL FORM
+   ============================================================ */
+(function () {
+  const modal   = document.getElementById('cta-modal');
+  const form    = document.getElementById('cta-form');
+  const success = document.getElementById('cta-form-success');
+
+  function openModal() {
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('input, select, textarea').focus();
+  }
+
+  document.querySelectorAll('[data-open-modal]').forEach(btn => {
+    btn.addEventListener('click', e => { e.preventDefault(); openModal(); });
+  });
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') e.preventDefault(); });
+
+  const fields = {
+    name:  { el: document.getElementById('f-name'),  err: document.getElementById('err-name') },
+    phone: { el: document.getElementById('f-phone'), err: document.getElementById('err-phone') },
+    email: { el: document.getElementById('f-email'), err: document.getElementById('err-email') },
+  };
+
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  const phoneRe = /^(\+?61|0)[2-9]\d{8}$|^(\+?61|0)4\d{8}$/;
+
+  function validate(id) {
+    const { el, err } = fields[id];
+    const val = el.value.trim();
+    let msg = '';
+
+    if (id === 'name') {
+      if (!val) msg = 'Please enter your full name.';
+      else if (val.length < 2) msg = 'Name must be at least 2 characters.';
+    } else if (id === 'email') {
+      if (!val) msg = 'Please enter your email address.';
+      else if (!emailRe.test(val)) msg = 'Please enter a valid email (e.g. jane@business.com.au).';
+    } else if (id === 'phone') {
+      const digits = val.replace(/[\s\-().]/g, '');
+      if (!digits) msg = 'Please enter your phone number.';
+      else if (!phoneRe.test(digits)) msg = 'Please enter a valid Australian number (e.g. 0412 345 678).';
+    }
+
+    err.textContent = msg;
+    el.classList.toggle('invalid', !!msg);
+    el.classList.toggle('valid', !msg && val.length > 0);
+    return !msg;
+  }
+
+  Object.keys(fields).forEach(id => {
+    fields[id].el.addEventListener('blur', () => validate(id));
+    fields[id].el.addEventListener('input', () => {
+      if (fields[id].el.classList.contains('invalid')) validate(id);
+    });
+  });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const valid = Object.keys(fields).map(id => validate(id)).every(Boolean);
+    if (!valid) return;
+    const name  = encodeURIComponent(fields.name.el.value.trim());
+    const email = encodeURIComponent(fields.email.el.value.trim());
+    window.location.href = 'booking.html?name=' + name + '&email=' + email;
+  });
+})();
+
+/* ============================================================
    FAQ ACCORDION
    ============================================================ */
 document.querySelectorAll('.faq-question').forEach(btn => {
