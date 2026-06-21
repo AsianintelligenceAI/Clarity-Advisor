@@ -72,27 +72,5 @@
     </div>
   </main>
 
-  <script>
-    // Carry email + name from form URL params through to thank you page
-    var _params  = new URLSearchParams(window.location.search);
-    var _email   = _params.get('email') || '';
-    var _name    = _params.get('name')  || '';
-
-    window.addEventListener('message', function (e) {
-      var d = e.data;
-      if (
-        d === 'booking_confirmed' ||
-        d === 'appointmentBooked' ||
-        (d && typeof d === 'object' && (
-          d.event === 'booking_confirmed' ||
-          d.event === 'appointmentBooked' ||
-          d.type  === 'booking_confirmed' ||
-          d.type  === 'appointmentBooked'
-        ))
-      ) {
-        window.location.href = '../thankyou/?email=' + encodeURIComponent(_email) + '&name=' + encodeURIComponent(_name);
-      }
-    });
-  </script>
 </body>
 </html>
