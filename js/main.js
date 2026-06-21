@@ -86,12 +86,12 @@
       source:        'Landing Page — Free Review Form',
     });
 
-    // Send as text/plain Blob — no CORS preflight, but body is valid JSON for GHL to map
-    const blob = new Blob([payload], { type: 'text/plain' });
-    const sent = typeof navigator.sendBeacon === 'function' && navigator.sendBeacon(GHL_WEBHOOK, blob);
-    if (!sent) {
-      fetch(GHL_WEBHOOK, { method: 'POST', mode: 'no-cors', body: blob }).catch(() => {});
-    }
+    // GHL supports CORS (access-control-allow-origin: *) so send as proper JSON
+    fetch(GHL_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: payload,
+    }).catch(() => {});
 
     // Meta Pixel — fire Lead conversion before redirect
     if (typeof fbq === 'function') {
