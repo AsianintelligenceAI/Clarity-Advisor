@@ -78,20 +78,6 @@ ul { list-style: none; }
   margin-bottom: 12px;
 }
 
-/* Divider band — "SOCIAL PROOF #N" */
-.band {
-  background: var(--col-bg-card);
-  color: var(--col-silver);
-  text-align: center;
-  padding: 14px var(--gutter);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  border-top: 1px solid var(--col-border);
-  border-bottom: 1px solid var(--col-border);
-}
-
 /* Section headings */
 h1, h2, h3, h4 {
   font-family: var(--font-head);
@@ -158,8 +144,6 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
       0 0 16px  7px rgba(216, 178, 96, 0.10);
   }
 }
-.btn-purple { background: var(--col-gold);   color: var(--col-bg); }
-.btn-teal   { background: var(--col-green);  color: var(--col-bg); }
 .btn-outline {
   background: transparent;
   color: var(--col-white);
@@ -167,48 +151,11 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
 }
 .btn-outline:hover { border-color: var(--col-gold); color: var(--col-gold); }
 
-.btn-center { display: block; width: fit-content; margin-inline: auto; }
-
-/* FUD text below CTA */
-.fud {
-  display: block;
-  margin-top: 10px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--col-silver);
-}
-
 /* CTA wrapper for centred buttons + fud */
 .cta-block {
   margin-top: 36px;
   text-align: center;
 }
-
-/* ============================================================
-   PLACEHOLDER BOXES  (swap out for real images/video)
-   ============================================================ */
-.placeholder {
-  background: var(--col-bg-card);
-  border: 2px dashed rgba(255,255,255,0.12);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 28px;
-  color: var(--col-silver);
-  font-size: 0.875rem;
-  font-weight: 600;
-  text-align: center;
-}
-.placeholder svg { opacity: 0.35; }
-.ph-hero   { min-height: 400px; }
-.ph-medium { min-height: 300px; }
-.ph-card   { min-height: 220px; }
-.ph-step   { min-height: 100px; }
 
 /* ============================================================
    HEADER
@@ -256,16 +203,6 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
   transition: opacity 0.2s;
 }
 .logo:hover .logo-img { opacity: 0.85; }
-
-.header-phone {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 700;
-  font-size: 0.92rem;
-  color: var(--col-gold);
-  white-space: nowrap;
-}
 
 /* ============================================================
    GOOGLE REVIEWS BADGE
@@ -419,59 +356,6 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
   height: 32px;
   background: rgba(255,255,255,0.12);
   margin-inline: 20px;
-  flex-shrink: 0;
-}
-
-.hero-img-wrap {
-  border-radius: 16px 16px 0 0;
-  overflow: hidden;
-  position: relative;
-  height: calc(100vh - 107px);
-  box-shadow: 0 32px 80px rgba(0,0,0,0.45);
-}
-.hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-}
-
-/* Stats strip — below social proof */
-.stats-strip {
-  background: var(--col-bg-card);
-  border-top: 1px solid var(--col-border);
-  border-bottom: 1px solid var(--col-border);
-  padding-block: 32px;
-}
-.stats-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-}
-.stats-col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  flex: 1;
-}
-.stats-val {
-  font-family: var(--font-head);
-  font-size: 2rem;
-  font-weight: 800;
-  color: #ffffff;
-  line-height: 1;
-}
-.stats-label {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.45);
-}
-.stats-divider {
-  width: 1px;
-  height: 40px;
-  background: rgba(255,255,255,0.1);
   flex-shrink: 0;
 }
 
@@ -658,35 +542,6 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
   flex-shrink: 0;
 }
 
-/* Image placeholder */
-.testi-img-ph {
-  background: #f4f4f8;
-  border: 1.5px dashed #d0d0d8;
-  border-radius: 8px;
-  min-height: 140px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  color: #bbb;
-  font-size: 0.75rem;
-  font-weight: 600;
-  overflow: hidden;
-}
-.testi-img-ph img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border-radius: 8px;
-}
-.testi-img-ph:has(img) {
-  background: none;
-  border: none;
-  min-height: 0;
-}
-
 /* Quote text */
 .testi-quote {
   font-size: 0.92rem;
@@ -711,22 +566,6 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
 }
 
 /* ============================================================
-   TWO-COLUMN CONTENT SECTIONS  (pain, value props)
-   ============================================================ */
-.two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 60px;
-}
-
-.two-col.flip { direction: rtl; }
-.two-col.flip > * { direction: ltr; }
-
-.col-text h2 { margin-block: 14px 20px; }
-.col-text p  { margin-bottom: 28px; }
-
-/* ============================================================
    VALUE PROP #1 — COMPARE GRID
    ============================================================ */
 .vp1-section {
@@ -742,13 +581,6 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
   margin-bottom: 52px;
 }
 .vp1-section .section-intro h2 { margin-bottom: 14px; }
-.section-subhead {
-  color: rgba(255,255,255,0.55);
-  font-size: 1rem;
-  line-height: 1.7;
-  margin: 0;
-}
-
 /* ── VP1 entrance animation ── */
 
 /* Intro heading */
@@ -907,44 +739,6 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
   background: rgba(0, 210, 148, 0.12);
   color: var(--col-green);
 }
-
-/* ============================================================
-   SECTION — DIFFERENTIATORS
-   ============================================================ */
-.diff-section { background: var(--col-bg); }
-
-.diff-section .section-intro {
-  text-align: center;
-  max-width: 660px;
-  margin-inline: auto;
-  margin-bottom: 52px;
-}
-.diff-section .section-intro h2 { margin-bottom: 12px; }
-
-.diff-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.diff-card {
-  background: var(--col-bg-card);
-  border: 1px solid var(--col-border-card);
-  border-radius: 10px;
-  padding: 28px 22px;
-  transition: border-color 0.2s;
-}
-.diff-card:hover { border-color: var(--col-gold); }
-.diff-num {
-  font-family: var(--font-head);
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--col-gold);
-  line-height: 1;
-  margin-bottom: 12px;
-}
-.diff-card h4 { margin-bottom: 8px; }
-.diff-card p  { font-size: 0.9rem; }
 
 /* ============================================================
    SECTION — WHO IT'S FOR
@@ -1135,34 +929,6 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
 }
 
 /* ============================================================
-   SOCIAL PROOF IMAGE BAND
-   ============================================================ */
-.proof-img-wrap {
-  position: relative;
-  width: 100%;
-  height: 420px;
-  overflow: hidden;
-}
-.proof-img-wrap::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(13,15,21,0.25) 0%,
-    rgba(13,15,21,0.1) 40%,
-    rgba(13,15,21,0.35) 100%
-  );
-}
-.proof-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
-  display: block;
-}
-
-/* ============================================================
    SECTION — HOW IT WORKS  (vertical timeline)
    ============================================================ */
 .how-section {
@@ -1288,23 +1054,6 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
   color: rgba(255,255,255,0.5);
   line-height: 1.75;
   margin: 0;
-}
-
-/* ============================================================
-   SECTION — PROOF SINGLE (Social Proof #3 / #4 slim cards)
-   ============================================================ */
-.proof-slim {
-  background: var(--col-bg-card);
-  padding-block: 60px;
-  border-top: 1px solid var(--col-border);
-  border-bottom: 1px solid var(--col-border);
-}
-.proof-slim-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  max-width: 720px;
-  margin-inline: auto;
 }
 
 /* ============================================================
@@ -1436,42 +1185,6 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
   line-height: 1.4;
 }
 
-.final-cta-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 60px;
-}
-
-.final-cta-text .label { color: var(--col-gold); }
-.final-cta-text h2 { margin-block: 14px 16px; }
-.final-cta-text p  { margin-bottom: 28px; }
-
-.recap-list {
-  margin-bottom: 28px;
-}
-.recap-list li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-block: 10px;
-  border-bottom: 1px solid var(--col-border);
-  font-size: 0.95rem;
-  color: var(--col-silver);
-}
-.recap-list li:last-child { border-bottom: none; }
-.recap-check {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-  background: var(--col-green);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.recap-check svg { display: block; }
-
 /* ============================================================
    CTA MODAL FORM
    ============================================================ */
@@ -1519,26 +1232,6 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
 
 .cta-modal.is-open .cta-modal-card {
   transform: translateY(0) scale(1);
-}
-
-.cta-modal-close {
-  position: absolute;
-  top: 16px;
-  right: 18px;
-  background: none;
-  border: none;
-  color: rgba(255,255,255,0.4);
-  font-size: 1.6rem;
-  line-height: 1;
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 6px;
-  transition: color 0.2s, background 0.2s;
-}
-
-.cta-modal-close:hover {
-  color: #fff;
-  background: rgba(255,255,255,0.07);
 }
 
 .cta-modal-header {
@@ -1754,36 +1447,19 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
 }
 
 /* ============================================================
-   RESPONSIVE — TABLET
-   ============================================================ */
-@media (max-width: 900px) {
-  .diff-grid  { grid-template-columns: repeat(2, 1fr); }
-}
-
-/* ============================================================
    RESPONSIVE — MOBILE
    ============================================================ */
 @media (max-width: 680px) {
   :root { --section-py: 60px; }
 
-  .hero-stat-val    { font-size: 1.2rem; }
+  .hero-stat-val     { font-size: 1.2rem; }
   .hero-stat-divider { margin-inline: 16px; }
-  .two-col          { grid-template-columns: 1fr; gap: 32px; }
-  .two-col.flip     { direction: ltr; }
-  .proof-grid       { grid-template-columns: 1fr; }
-  .compare-grid     { grid-template-columns: 1fr; }
-  .who-grid         { grid-template-columns: 1fr; }
-  .diff-grid        { grid-template-columns: 1fr; }
-  .steps-grid       { grid-template-columns: 1fr; }
-  .proof-slim-grid  { grid-template-columns: 1fr; }
-  .final-cta-grid   { grid-template-columns: 1fr; }
-  .recap-icons      { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .proof-grid        { grid-template-columns: 1fr; }
+  .compare-grid      { grid-template-columns: 1fr; }
+  .who-grid          { grid-template-columns: 1fr; }
+  .recap-icons       { grid-template-columns: repeat(2, 1fr); gap: 28px; }
 
   .header-right .btn { display: none; }
-}
-
-@media (max-width: 420px) {
-  .header-phone span { display: none; }
 }
 
 /* ============================================================
