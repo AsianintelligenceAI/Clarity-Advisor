@@ -1406,10 +1406,9 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
   align-items: center;
 }
 .footer-logo-img {
-  height: 36px;
+  height: 72px;
   width: auto;
-  filter: brightness(0) invert(1);
-  opacity: 0.8;
+  opacity: 0.9;
   transition: opacity 0.2s;
 }
 .footer-logo-link:hover .footer-logo-img { opacity: 1; }
