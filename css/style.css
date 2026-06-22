@@ -1333,7 +1333,7 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
 .cta-form-submit {
   width: 100%;
   margin-top: 4px;
-  font-size: 1rem;
+  font-size: 0.82rem;
   padding-block: 15px;
   display: flex;
   align-items: center;
