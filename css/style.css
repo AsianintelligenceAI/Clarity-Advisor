@@ -1744,6 +1744,16 @@ p  { color: var(--col-muted); font-size: 1.05rem; line-height: 1.75; }
 }
 
 /* ============================================================
+   CREDENTIALS — constrain marquee width on desktop
+   ============================================================ */
+@media (min-width: 681px) {
+  .credentials-marquee {
+    max-width: 860px;
+    margin-inline: auto;
+  }
+}
+
+/* ============================================================
    RESPONSIVE — TABLET
    ============================================================ */
 @media (max-width: 900px) {
