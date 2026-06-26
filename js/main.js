@@ -1,4 +1,18 @@
 /* ============================================================
+   FACEBOOK CLICK ID — capture fbclid on page load and persist
+   ============================================================ */
+(function () {
+  var fbclid = new URLSearchParams(window.location.search).get('fbclid');
+  if (fbclid) {
+    var fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+    sessionStorage.setItem('_fbc', fbc);
+    try {
+      document.cookie = '_fbc=' + fbc + ';path=/;max-age=7776000;SameSite=Lax';
+    } catch (e) {}
+  }
+})();
+
+/* ============================================================
    CTA MODAL FORM
    ============================================================ */
 (function () {
@@ -89,10 +103,12 @@
       return m ? m[2] : '';
     }
     const fbp = getCookie('_fbp');
-    const fbc = getCookie('_fbc') || (function () {
-      var fbclid = new URLSearchParams(window.location.search).get('fbclid');
-      return fbclid ? 'fb.1.' + Date.now() + '.' + fbclid : '';
-    })();
+    const fbc = getCookie('_fbc')
+      || sessionStorage.getItem('_fbc')
+      || (function () {
+           var fbclid = new URLSearchParams(window.location.search).get('fbclid');
+           return fbclid ? 'fb.1.' + Date.now() + '.' + fbclid : '';
+         })();
 
     // Meta Pixel — browser-side Lead event
     if (typeof fbq === 'function') {
