@@ -18,6 +18,10 @@ const CONTENT_NAMES = {
   Schedule: 'Free Tax Review — Booked',
 };
 
+const EVENT_VALUES = {
+  Schedule: 500,
+};
+
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -71,6 +75,7 @@ module.exports = async function handler(req, res) {
       user_data:        userData,
       custom_data: {
         content_name: CONTENT_NAMES[name] || name,
+        ...(EVENT_VALUES[name] && { value: EVENT_VALUES[name], currency: 'AUD' }),
       },
     }],
   };

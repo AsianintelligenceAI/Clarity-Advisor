@@ -16,7 +16,7 @@
     fbq('init', '1700395107938724');
     fbq('track', 'PageView');
     var _scheduleEventId = 'schedule_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
-    fbq('track', 'Schedule', { content_name: 'Free Tax Review — Booked' }, { eventID: _scheduleEventId });
+    fbq('track', 'Schedule', { content_name: 'Free Tax Review — Booked', value: 500, currency: 'AUD' }, { eventID: _scheduleEventId });
 
     // CAPI — server-side Schedule event (deduplicated via eventID)
     (function (eid) {
